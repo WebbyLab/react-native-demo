@@ -7,6 +7,7 @@ import {cities} from './../data/docs';
 import Button from 'react-native-button';
 import palette  from './../styles/palette';
 import SearchResults from './SearchResults';
+import AutocompleteTextInput from './AutocompleteTextInput';
 
 
 const {
@@ -19,36 +20,54 @@ const {
 
 export default class DocIndex extends React.Component {
 
-  static propTypes = {
-    docs: React.PropTypes.object.isRequired,
-  };
-
   constructor(props) {
     super(props);
 
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleStartPointSelect = this.handleStartPointSelect.bind(this);
+    this.handleEndPointSelect = this.handleEndPointSelect.bind(this);
+
     this.state = {
-      startPoint: cities[0],
-      endPoint: cities[1],
+      startPoint: null,
+      endPoint: null,
 
     };
+  }
+
+  handleStartPointSelect(item) {
+      this.setState({
+        ...this.state,
+        startPoint: item
+      });
+  }
+
+  handleEndPointSelect(item) {
+      this.setState({
+        ...this.state,
+        endPoint: item
+      });
   }
 
   render() {
     return (
       <View style={styles.container}>
-          <TextInput
-            placeholder={'From'}
-            style={styles.input}
+          <AutocompleteTextInput
+            items={cities}
+            disabled={this.state.falseSwitchIsOn}
+            displayingProp='name'
+            placeholder='From'
+            onSelect={this.handleStartPointSelect}
           />
 
-          <TextInput
-            placeholder={'To'}
-            style={styles.input}
+          <AutocompleteTextInput
+            items={cities}
+            displayingProp='name'
+            placeholder='To'
+            onSelect={this.handleEndPointSelect}
           />
 
           <Switch
-            label={'Via main roads'}
+            label={'From my current location'}
             onTintColor={palette.accentColor}
             onValueChange={(value) => this.setState({falseSwitchIsOn: value})}
             style={{marginBottom: 10}}
@@ -62,14 +81,15 @@ export default class DocIndex extends React.Component {
           />
 
           <Button style={styles.button} activeOpacity={0.7} onPress={this.handleSearch}>
-            Search for compamions
+            Search
           </Button>
       </View>
     );
   }
 
   handleSearch() {
-    const title = `${this.state.startPoint.name} - ${this.state.endPoint.name}`;
+    const {startPoint, endPoint} = this.state;
+    const title = startPoint && endPoint ? `${this.state.startPoint.name} - ${this.state.endPoint.name}` : 'Search results';
     this.props.navigator.push({
         component: SearchResults,
         title: title,
@@ -99,7 +119,6 @@ const styles = StyleSheet.create({
     backgroundColor: palette.accentColor,
     alignSelf: 'stretch',
     padding: 13,
-    width: 400,
     fontSize: 20,
     borderRadius: 2,
     margin: 10

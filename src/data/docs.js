@@ -32,8 +32,10 @@ export default {
   results: [
     {
         from: 'New York',
+        carPhoto: 'http://o.aolcdn.com/dims-shared/dims3/GLOB/legacy_thumbnail/750x422/quality/95/http://www.blogcdn.com/slideshows/images/slides/301/559/2/S3015592/slug/l/01-2015-bmw-x6-fd-1.jpg',
         to: 'Nutley',
         time: 'Leaving in 7 minutes',
+        comment: 'I will pass through Jersey city and national theatre',
         avatar: 'https://pbs.twimg.com/profile_images/458794690867761152/IMn9gg6K.jpeg',
         name: 'Tony Stark',
         car: 'BMW X6',
@@ -41,8 +43,10 @@ export default {
     },
     {
         from: 'New York',
+        carPhoto: 'http://o.aolcdn.com/dims-shared/dims3/GLOB/legacy_thumbnail/750x422/quality/95/http://www.blogcdn.com/slideshows/images/slides/301/559/2/S3015592/slug/l/01-2015-bmw-x6-fd-1.jpg',
         to: 'Nutley',
         time: 'Leaving in 23 minutes',
+        comment: 'I will pass through Jersey city and national theatre',
         avatar: 'https://pbs.twimg.com/profile_images/458794690867761152/IMn9gg6K.jpeg',
         name: 'Tony Stark',
         car: 'BMW X6',
@@ -50,7 +54,9 @@ export default {
     },
     {
         from: 'New York',
+        carPhoto: 'http://o.aolcdn.com/dims-shared/dims3/GLOB/legacy_thumbnail/750x422/quality/95/http://www.blogcdn.com/slideshows/images/slides/301/559/2/S3015592/slug/l/01-2015-bmw-x6-fd-1.jpg',
         to: 'Nutley',
+        comment: 'I will pass through Jersey city and national theatre',
         time: 'Leaving in 56 minutes',
         avatar: 'https://pbs.twimg.com/profile_images/458794690867761152/IMn9gg6K.jpeg',
         name: 'Tony Stark',
@@ -63,22 +69,38 @@ export default {
     {
         from: 'New York',
         to: 'Nutley',
-        date: '26/06/2015'
+        date: '26/06/2015',
+        avatar: 'https://pbs.twimg.com/profile_images/458794690867761152/IMn9gg6K.jpeg',
+        name: 'Tony Stark',
+        car: 'BMW X6',
+        price: '5$'
     },
     {
         from: 'New York',
         to: 'Nutley',
-        date: '26/06/2015'
+        date: '26/06/2015',
+        avatar: 'https://pbs.twimg.com/profile_images/458794690867761152/IMn9gg6K.jpeg',
+        name: 'Tony Stark',
+        car: 'BMW X6',
+        price: '5$'
     },
     {
         from: 'New York',
         to: 'Nutley',
-        date: '26/06/2015'
+        date: '26/06/2015',
+        avatar: 'https://pbs.twimg.com/profile_images/458794690867761152/IMn9gg6K.jpeg',
+        name: 'Tony Stark',
+        car: 'BMW X6',
+        price: '5$'
     },
     {
         from: 'New York',
         to: 'Nutley',
-        date: '26/06/2015'
+        date: '26/06/2015',
+        avatar: 'https://pbs.twimg.com/profile_images/458794690867761152/IMn9gg6K.jpeg',
+        name: 'Tony Stark',
+        car: 'BMW X6',
+        price: '5$'
     }
   ]
 }

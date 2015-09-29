@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react-native';
-//import Autocomplete from 'react-native-autocomplete';
+import Autocomplete from 'react-native-autocomplete';
 
 const {
     StyleSheet,
@@ -11,7 +11,7 @@ const {
     AlertIOS
 } = React;
 
-export default class MapBox extends React.Component {
+export default class AutocompleteTextInput extends React.Component {
 
   static propTypes = {
     items: React.PropTypes.array.isRequired,
@@ -21,72 +21,52 @@ export default class MapBox extends React.Component {
   constructor(props) {
     super(props);
 
+    this.onSelect = this.onSelect.bind(this);
     this.state = {
-        displayedItems: []
+        displayedText: ''
     };
   }
 
-  onTyping(text) {
-        var countries = Countries.filter(function (country) {
-            return country.name.toLowerCase().startsWith(text.toLowerCase())
-        }).map(function (country) {
-            return country.name;
+    onSelect(text) {
+        this.setState({
+            displayedText: text
         });
 
-        this.setState({
-            data:  countries
-        });
-    },
+        const selectedItem = this.props.items.find((item) => item[this.props.displayingProp] === text);
+
+        if (selectedItem) {
+            this.props.onSelect(selectedItem);
+        }
+    }
 
   render() {
-    const {startPoint, endPoint} = this.props;
-
-    const annotations = [];
-
-    if (startPoint) {
-        annotations.push({
-            latitude: startPoint.latitude,
-            longitude: startPoint.longitude,
-            animateDrop: true,
-            title: 'From',
-            subtitle: startPoint.name,
-            id: 'start'
-        });
-    }
-
-    if (endPoint) {
-        annotations.push({
-            latitude: endPoint.latitude,
-            longitude: endPoint.longitude,
-            animateDrop: true,
-            title: 'To',
-            subtitle: endPoint.name,
-            id: 'end'
-        });
-    }
-
-    console.log(this.props);
-
+    console.log(this.state.displayedText);
     return (
-      <View style={this.props.style} >
-          <MapView
-              style={styles.mapView}
-              region={{
-                latitude: startPoint ? startPoint.latitude : 0,
-                longitude: startPoint ? startPoint.longitude : 0,
-                latitudeDelta: 0.3,
-                longitudeDelta: 0.3,
-              }}
-              annotations={annotations}
-              showsUserLocation={annotations.length === 0}
-            />
-        </View>
+      <View style={styles.container}>
+        <TextInput
+            style={styles.autocomplete}
+            placeholder={this.props.placeholder}
+            editable={this.props.disabled}
+            onChangeText={this.onSelect}
+            value={this.state.displayedText}
+        />
+    </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  mapView: {
-    flex: 1,
-  },
+    autocomplete: {
+        alignSelf: 'stretch',
+        fontSize: 18,
+        borderRadius: 2,
+        padding: 5,
+        borderWidth: 1,
+        borderColor: '#dddddd',
+        height: 40,
+        margin: 10,
+    },
+    container: {
+        flex: 1,
+    }
 });

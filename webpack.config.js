@@ -24,6 +24,7 @@ var config = {
         path.resolve(__dirname, 'src'),
         path.resolve(__dirname, 'node_modules/react-native-button'),
         path.resolve(__dirname, 'node_modules/react-native-autocomplete'),
+        path.resolve(__dirname, 'node_modules/react-native-parallax-view'),
       ],
       loader: 'babel',
       query: {

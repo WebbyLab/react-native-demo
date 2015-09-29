@@ -3,7 +3,6 @@
 import React from 'react-native';
 import {results} from './../data/docs';
 import palette  from './../styles/palette';
-import OrderPage from './OrderPage';
 
 const {
   StyleSheet,
@@ -13,7 +12,7 @@ const {
   TouchableHighlight
 } = React;
 
-export default class SearchResultItem extends React.Component {
+export default class OrderItem extends React.Component {
 
   static propTypes = {
     item: React.PropTypes.object.isRequired,
@@ -21,6 +20,8 @@ export default class SearchResultItem extends React.Component {
 
   constructor(props) {
     super(props);
+
+
   }
 
   render() {
@@ -28,10 +29,7 @@ export default class SearchResultItem extends React.Component {
 
     return (
        <View style={styles.container}>
-            <TouchableHighlight
-              underlayColor='#f7f7f7'
-              onPress={() => this.props.onRowSelect(item)}>
-            <View style={styles.content}>
+
             <View style={styles.data}>
                 <Image
                     style={styles.avatar}
@@ -41,34 +39,27 @@ export default class SearchResultItem extends React.Component {
                         <Text style={styles.name}>{item.name}</Text>
                         <Text style={styles.route}>{item.from} - {item.to}</Text>
                         <Text style={styles.car}>{item.car}</Text>
-                        <Text style={styles.time}>{item.time}</Text>
+                        <Text style={styles.time}>{item.date}</Text>
                   </View>
             </View>
 
               <View style={styles.priceContainer}>
                     <Text style={styles.price}>{item.price}</Text>
               </View>
-              </View>
-              </TouchableHighlight>
 
        </View>
     );
   }
 
-
-
 }
 
 const styles = StyleSheet.create({
   container: {
-    borderBottomWidth: 1,
-    borderColor: palette.borderColor
-  },
-
-  content: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    borderBottomWidth: 1,
+    borderColor: palette.borderColor
   },
 
   data: {
@@ -109,7 +100,7 @@ const styles = StyleSheet.create({
   price: {
     fontSize: 56,
     fontWeight: '200',
-    color: palette.accentColor
+    color: 'grey'
   },
 
   avatar: {

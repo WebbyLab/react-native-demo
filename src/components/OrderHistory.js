@@ -1,10 +1,9 @@
 'use strict';
 
 import React from 'react-native';
-import {results} from './../data/docs';
+import {history} from './../data/docs';
 import palette  from './../styles/palette';
-import SearchResultItem from './SearchResultItem';
-import OrderPage from './OrderPage';
+import OrderItem from './OrderItem';
 
 
 const {
@@ -17,7 +16,7 @@ const {
   ListView
 } = React;
 
-export default class SearchResults extends React.Component {
+export default class OrderHistory extends React.Component {
 
   static propTypes = {
     docs: React.PropTypes.object.isRequired,
@@ -26,15 +25,12 @@ export default class SearchResults extends React.Component {
   constructor(props) {
     super(props);
 
-    this.renderSearchResultItem = this.renderSearchResultItem.bind(this);
-    this.selectRow = this.selectRow.bind(this);
-
     const dataSource = new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2,
     });
 
     this.state = {
-        dataSource: dataSource.cloneWithRows(results)
+        dataSource: dataSource.cloneWithRows(history)
     };
   }
 
@@ -43,29 +39,19 @@ export default class SearchResults extends React.Component {
        <View style={styles.container}>
             <ListView
                 dataSource={this.state.dataSource}
-                renderRow={this.renderSearchResultItem}
+                renderRow={this.renderOrderItem}
                 style={styles.listView}
               />
        </View>
     );
   }
 
-  renderSearchResultItem(item) {
+  renderOrderItem(item) {
     return (
-        <SearchResultItem
+        <OrderItem
             item={item}
-            onRowSelect={this.selectRow}
         />
     );
-  }
-
-selectRow(order) {
-    console.log('seleect roooow', this.props);
-    this.props.navigator.push({
-        component: OrderPage,
-        title: 'Order',
-        passProps: { order },
-    });
   }
 }
 

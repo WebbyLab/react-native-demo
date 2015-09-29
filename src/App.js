@@ -3,6 +3,7 @@
 import React    from 'react-native';
 
 import DocIndex from './components/DocIndex';
+import SearchResults from './components/SearchResults';
 
 import palette  from './styles/palette.js';
 
@@ -24,12 +25,12 @@ export default class App extends React.Component {
     };
   }
 
-  _renderContent(color: string, pageText: string, num?: number) {
+  _renderContent(pageText: string, component: object) {
     return (
       <NavigatorIOS
         style={styles.container}
         initialRoute={{
-          component: DocIndex,
+          component: component,
           title: pageText,
           passProps: {},
         }}
@@ -52,7 +53,7 @@ export default class App extends React.Component {
               selectedTab: 'historyTab',
             });
           }}>
-
+          {this._renderContent('History', SearchResults)}
         </TabBarIOS.Item>
         <TabBarIOS.Item
           selected={this.state.selectedTab === 'searchTab'}
@@ -62,7 +63,7 @@ export default class App extends React.Component {
               selectedTab: 'searchTab',
             });
           }}>
-          {this._renderContent('#414A8C', 'Search')}
+          {this._renderContent('Search', DocIndex)}
         </TabBarIOS.Item>
         <TabBarIOS.Item
           selected={this.state.selectedTab === 'topRatedTab'}
@@ -72,7 +73,7 @@ export default class App extends React.Component {
               selectedTab: 'topRatedTab',
             });
           }}>
-          {this._renderContent('#00dd00', 'Top Rated')}
+          {this._renderContent('Tranding', SearchResults)}
         </TabBarIOS.Item>
       </TabBarIOS>
     );
