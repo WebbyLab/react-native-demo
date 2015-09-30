@@ -9,12 +9,8 @@
   },
   "dependencies": {
     "react-native": "0.11.2",
-    "react-native-autocomplete": "^0.1.0",
     "react-native-button": "^1.2.1",
-    "react-native-icons": "^0.4.0",
-    "react-native-mapbox-gl": "^0.4.2",
-    "react-native-parallax-view": "^2.0.2",
-    "react-native-vector-icons": "^0.6.11"
+    "react-native-parallax-view": "^2.0.2"
   },
   "devDependencies": {
     "babel": "^5.1.4",
