@@ -1,11 +1,13 @@
 'use strict';
 
-import React from 'react-native';
-import MapBox from './MapBox';
-import {cities} from './../data/docs';
-import Button from 'react-native-button';
-import palette  from './../styles/palette';
+import React        from 'react-native';
+
+import MapBox       from './MapBox';
+import Button       from 'react-native-button';
 import ParallaxView from 'react-native-parallax-view';
+
+import {cities}     from './../data/data';
+import palette      from './../styles/palette';
 
 const {
   StyleSheet,
@@ -25,15 +27,14 @@ export default class OrderPage extends React.Component {
 
     this.state = {
       startPoint: null,
-      endPoint: null,
-
+      endPoint: null
     };
   }
 
   render() {
     const {order} = this.props;
 
-    const HEADER = (
+    const HeaderComponent = (
         <View style={styles.header}>
             <Image
                 style={styles.avatar}
@@ -50,7 +51,7 @@ export default class OrderPage extends React.Component {
           ref={component => this._scrollView = component}
           backgroundSource={{ uri: order.carPhoto }}
           windowHeight={300}
-          header={HEADER}>
+          header={HeaderComponent}>
           <View style={styles.view}>
             <Text style={styles.dest}>
                 {order.from} - {order.to}
@@ -63,18 +64,15 @@ export default class OrderPage extends React.Component {
             <Text style={styles.comment}>
                 {order.comment}
             </Text>
-
-
-          <MapBox
-            style={styles.mapBox}
-          />
-
-          <Button
-            style={styles.button}
-            activeOpacity={0.7}
-            onPress={this.handleBuy.bind(null, order)}>
-            Order
-          </Button>
+            <MapBox
+              style={styles.mapBox}
+            />
+            <Button
+              style={styles.button}
+              activeOpacity={0.7}
+              onPress={this.handleBuy.bind(null, order)}>
+              Order
+            </Button>
         </View>
       </ParallaxView>
     );
@@ -85,8 +83,8 @@ export default class OrderPage extends React.Component {
         'Confirm payment',
         `Pay ${order.price} for this trip with your card **** 3456`,
         [
-            {text: 'Cancel', onPress: () => console.log('cancel')},
-            {text: 'Pay', onPress: () => console.log('pay')}
+            {text: 'Cancel'},
+            {text: 'Pay'}
         ]
     );
   }
@@ -94,59 +92,57 @@ export default class OrderPage extends React.Component {
 
 
 const styles = StyleSheet.create({
-
   container: {
     marginTop: 80,
   },
 
   view: {
-        paddingHorizontal: 10,
-        paddingVertical: 6
-    },
+    paddingHorizontal: 10,
+    paddingVertical: 6
+  },
 
-    dest: {
-        color: palette.textColor,
-        fontSize: 30,
-        alignSelf: 'center'
-    },
+  dest: {
+    color: palette.textColor,
+    fontSize: 30,
+    alignSelf: 'center'
+  },
 
   header: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
-        alignItems: 'center'
-    },
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    alignItems: 'center'
+  },
 
-    name: {
-        color: 'white',
-        fontSize: 24,
-        fontWeight: '600',
-        alignSelf: 'center'
-    },
+  name: {
+    color: 'white',
+    fontSize: 24,
+    fontWeight: '600',
+    alignSelf: 'center'
+  },
 
-    time: {
-        fontSize: 14,
-        alignSelf: 'center',
-        fontWeight: '200',
-        color: palette.secondaryTextColor
-    },
+  time: {
+    fontSize: 14,
+    alignSelf: 'center',
+    fontWeight: '200',
+    color: palette.secondaryTextColor
+  },
 
-    car: {
-        color: palette.textColor,
-        fontSize: 16,
-        fontWeight: '500',
-        alignSelf: 'center'
-    },
+  car: {
+    color: palette.textColor,
+    fontSize: 16,
+    fontWeight: '500',
+    alignSelf: 'center'
+  },
 
-    comment: {
-        width: 300,
-        alignSelf: 'center',
-        padding:10,
-        margin: 10,
-        borderLeftWidth: 3,
-        borderColor: palette.accentColor
-    },
-
+  comment: {
+    width: 300,
+    alignSelf: 'center',
+    padding:10,
+    margin: 10,
+    borderLeftWidth: 3,
+    borderColor: palette.accentColor
+  },
 
   button: {
     color: 'white',
@@ -172,7 +168,4 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: palette.borderColor
   }
-
 });
-
-

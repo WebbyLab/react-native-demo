@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react-native';
-import {history} from './../data/docs';
+import {history} from './../data/data';
 import palette  from './../styles/palette';
 import OrderItem from './OrderItem';
 
@@ -19,7 +19,7 @@ const {
 export default class OrderHistory extends React.Component {
 
   static propTypes = {
-    docs: React.PropTypes.object.isRequired,
+    data: React.PropTypes.object.isRequired,
   };
 
   constructor(props) {

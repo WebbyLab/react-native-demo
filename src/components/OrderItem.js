@@ -1,8 +1,10 @@
 'use strict';
 
-import React from 'react-native';
-import {results} from './../data/docs';
-import palette  from './../styles/palette';
+import React     from 'react-native';
+import OrderPage from './OrderPage';
+
+import {results} from './../data/data';
+import palette   from './../styles/palette';
 
 const {
   StyleSheet,
@@ -20,51 +22,54 @@ export default class OrderItem extends React.Component {
 
   constructor(props) {
     super(props);
-
-
   }
 
   render() {
     const {item} = this.props;
 
     return (
-       <View style={styles.container}>
-
-            <View style={styles.data}>
-                <Image
-                    style={styles.avatar}
-                    source={{uri: item.avatar}}
-                  />
-                  <View style={styles.dataContainer}>
-                        <Text style={styles.name}>{item.name}</Text>
-                        <Text style={styles.route}>{item.from} - {item.to}</Text>
-                        <Text style={styles.car}>{item.car}</Text>
-                        <Text style={styles.time}>{item.date}</Text>
-                  </View>
-            </View>
-
-              <View style={styles.priceContainer}>
-                    <Text style={styles.price}>{item.price}</Text>
-              </View>
-
-       </View>
+      <View style={styles.container}>
+        <TouchableHighlight
+          underlayColor='#f7f7f7'
+          onPress={() => this.props.onRowSelect(item)}>
+        <View style={styles.content}>
+        <View style={styles.data}>
+          <Image
+            style={styles.avatar}
+            source={{uri: item.avatar}}
+          />
+          <View style={styles.dataContainer}>
+            <Text style={styles.name}>{item.name}</Text>
+            <Text style={styles.route}>{item.from} - {item.to}</Text>
+            <Text style={styles.car}>{item.car}</Text>
+            <Text style={styles.time}>{item.time}</Text>
+          </View>
+        </View>
+          <View style={styles.priceContainer}>
+            <Text style={styles.price}>{item.price}</Text>
+          </View>
+          </View>
+        </TouchableHighlight>
+      </View>
     );
   }
-
 }
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
     borderBottomWidth: 1,
     borderColor: palette.borderColor
   },
 
+  content: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+
   data: {
-        flexDirection: 'row',
-        alignItems: 'center'
+    flexDirection: 'row',
+    alignItems: 'center'
   },
 
   dataContainer: {
@@ -98,18 +103,17 @@ const styles = StyleSheet.create({
   },
 
   price: {
-    fontSize: 56,
+    fontSize: 40,
     fontWeight: '200',
-    color: 'grey'
+    color: palette.accentColor
   },
 
   avatar: {
-    width: 100,
+    width: 80,
     margin: 10,
-    height: 100,
-    borderRadius: 50,
+    height: 80,
+    borderRadius: 40,
     borderWidth: 1,
     borderColor: palette.borderColor
   }
-
 });

@@ -2,7 +2,6 @@
 
 import React from 'react-native';
 
-
 const {
   StyleSheet,
   View,
@@ -24,7 +23,6 @@ export default class MapBox extends React.Component {
 
   render() {
     const {startPoint, endPoint} = this.props;
-
     const annotations = [];
 
     if (startPoint) {
@@ -49,21 +47,19 @@ export default class MapBox extends React.Component {
         });
     }
 
-    console.log(this.props);
-
     return (
       <View style={this.props.style} >
-          <MapView
-              style={styles.mapView}
-              region={{
-                latitude: startPoint ? startPoint.latitude : 0,
-                longitude: startPoint ? startPoint.longitude : 0,
-                latitudeDelta: 0.3,
-                longitudeDelta: 0.3,
-              }}
-              annotations={annotations}
-              showsUserLocation={annotations.length === 0}
-            />
+        <MapView
+          style={styles.mapView}
+          region={{
+            latitude: startPoint ? startPoint.latitude : 0,
+            longitude: startPoint ? startPoint.longitude : 0,
+            latitudeDelta: 0.3,
+            longitudeDelta: 0.3,
+          }}
+          annotations={annotations}
+          showsUserLocation={annotations.length === 0}
+        />
         </View>
     );
   }
@@ -72,5 +68,5 @@ export default class MapBox extends React.Component {
 const styles = StyleSheet.create({
   mapView: {
     flex: 1,
-  },
+  }
 });

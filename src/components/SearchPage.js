@@ -1,14 +1,16 @@
 'use strict';
 
-import React from 'react-native';
-import MapBox from './MapBox';
-import Switch from './Switch';
-import {cities} from './../data/docs';
-import Button from 'react-native-button';
-import palette  from './../styles/palette';
-import SearchResults from './SearchResults';
-import AutocompleteTextInput from './AutocompleteTextInput';
+import React         from 'react-native';
 
+import MapBox        from './MapBox';
+import Switch        from './Switch';
+import Button        from 'react-native-button';
+import OrdersList from './OrdersList';
+import TextField from './TextField';
+
+import palette        from './../styles/palette';
+
+import {cities}       from './../data/data';
 
 const {
   StyleSheet,
@@ -18,7 +20,7 @@ const {
   SwitchIOS
 } = React;
 
-export default class DocIndex extends React.Component {
+export default class SearchPage extends React.Component {
 
   constructor(props) {
     super(props);
@@ -51,38 +53,36 @@ export default class DocIndex extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-          <AutocompleteTextInput
-            items={cities}
-            disabled={this.state.falseSwitchIsOn}
-            displayingProp='name'
-            placeholder='From'
-            onSelect={this.handleStartPointSelect}
-          />
+        <TextField
+          items={cities}
+          disabled={this.state.falseSwitchIsOn}
+          displayingProp='name'
+          placeholder='From'
+          onSelect={this.handleStartPointSelect}
+        />
 
-          <AutocompleteTextInput
-            items={cities}
-            displayingProp='name'
-            placeholder='To'
-            onSelect={this.handleEndPointSelect}
-          />
+        <TextField
+          items={cities}
+          displayingProp='name'
+          placeholder='To'
+          onSelect={this.handleEndPointSelect}
+        />
 
-          <Switch
-            label={'From my current location'}
-            onTintColor={palette.accentColor}
-            onValueChange={(value) => this.setState({falseSwitchIsOn: value})}
-            style={{marginBottom: 10}}
-            value={this.state.falseSwitchIsOn}
-          />
+        <Switch
+          label={'From my current location'}
+          onTintColor={palette.accentColor}
+          onValueChange={(value) => this.setState({falseSwitchIsOn: value})}
+          style={{marginBottom: 10}}
+          value={this.state.falseSwitchIsOn}
+        />
 
-          <MapBox
-            style={styles.mapBox}
-            startPoint={this.state.startPoint}
-            endPoint={this.state.endPoint}
-          />
+        <MapBox
+          style={styles.mapBox}
+          startPoint={this.state.startPoint}
+          endPoint={this.state.endPoint}
+        />
 
-          <Button style={styles.button} activeOpacity={0.7} onPress={this.handleSearch}>
-            Search
-          </Button>
+        <Button style={styles.button} activeOpacity={0.7} onPress={this.handleSearch}> Search </Button>
       </View>
     );
   }
@@ -91,7 +91,7 @@ export default class DocIndex extends React.Component {
     const {startPoint, endPoint} = this.state;
     const title = startPoint && endPoint ? `${this.state.startPoint.name} - ${this.state.endPoint.name}` : 'Search results';
     this.props.navigator.push({
-        component: SearchResults,
+        component: OrdersList,
         title: title,
         passProps: { from: this.state.startPoint, to: this.state.endPoint },
     });
@@ -121,13 +121,12 @@ const styles = StyleSheet.create({
     padding: 13,
     fontSize: 20,
     borderRadius: 2,
-    margin: 10
+    margin: 10,
   },
 
   mapBox: {
-    height: 200,
+    height: 175,
     margin: 10,
     alignSelf: 'stretch',
   }
-
 });

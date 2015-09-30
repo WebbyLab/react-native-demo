@@ -2,13 +2,11 @@
 
 import React from 'react-native';
 
-
 const {
   StyleSheet,
   View,
   Text,
   SwitchIOS,
-  MapView,
 } = React;
 
 export default class Switch extends React.Component {
@@ -31,7 +29,7 @@ export default class Switch extends React.Component {
           <SwitchIOS
             {...this.props}
           />
-        </View>
+      </View>
     );
   }
 }
@@ -43,6 +41,7 @@ const styles = StyleSheet.create({
     margin: 10,
     justifyContent: 'space-between'
   },
+
   text: {
     fontSize: 18
   }
