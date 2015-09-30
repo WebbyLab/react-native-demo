@@ -43,25 +43,25 @@ export default {
     },
     {
         from: 'New York',
-        carPhoto: 'http://o.aolcdn.com/dims-shared/dims3/GLOB/legacy_thumbnail/750x422/quality/95/http://www.blogcdn.com/slideshows/images/slides/301/559/2/S3015592/slug/l/01-2015-bmw-x6-fd-1.jpg',
-        to: 'Nutley',
+        carPhoto: 'http://images.parenting.mdpcdn.com/sites/parenting.com/files/styles/slide/public/600_ss4_honda-crv.jpg?itok=DozQL3El',
+        to: 'Newark',
         time: 'Leaving in 23 minutes',
-        comment: 'I will pass through Jersey city and national theatre',
-        avatar: 'https://pbs.twimg.com/profile_images/458794690867761152/IMn9gg6K.jpeg',
-        name: 'Tony Stark',
-        car: 'BMW X6',
-        price: '5$'
+        comment: 'Cookies included',
+        avatar: 'http://www.fresher.ru/manager_content/images2/posvyashhaetsya-samomu-iskrometnomu-cheloveku-v-mire/big/4.jpg',
+        name: 'Ms. Dautfaer',
+        car: 'Honda CRV',
+        price: '7$'
     },
     {
         from: 'New York',
-        carPhoto: 'http://o.aolcdn.com/dims-shared/dims3/GLOB/legacy_thumbnail/750x422/quality/95/http://www.blogcdn.com/slideshows/images/slides/301/559/2/S3015592/slug/l/01-2015-bmw-x6-fd-1.jpg',
+        carPhoto: 'http://cdn.corlate.xyz/2015/08/09/1967chevyimpala-l-a1d305ac053665a4.jpg',
         to: 'Nutley',
-        comment: 'I will pass through Jersey city and national theatre',
+        comment: 'Dont forget to take with you holy water, silver bullets and wooden stake',
         time: 'Leaving in 56 minutes',
-        avatar: 'https://pbs.twimg.com/profile_images/458794690867761152/IMn9gg6K.jpeg',
-        name: 'Tony Stark',
-        car: 'BMW X6',
-        price: '5$'
+        avatar: 'https://pbs.twimg.com/profile_images/426505381536231424/tzTrriTc.jpeg',
+        name: 'Dean Winchester',
+        car: 'Chevrolet Impala 67',
+        price: '9$'
     }
   ],
 

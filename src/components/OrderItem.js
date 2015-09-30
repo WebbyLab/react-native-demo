@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
 
   name: {
-    fontSize: 22
+    fontSize: 20
   },
 
   route: {
