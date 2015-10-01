@@ -1402,7 +1402,7 @@ var n=this._reusableProps[e];n||(n=this._reusableProps[e]=[]);var r=n[t];return 
 	    }],
 	
 	    history: [{
-	        from: 'New York',
+	        from: 'New hh',
 	        to: 'Nutley',
 	        date: '26/06/2015',
 	        avatar: 'https://pbs.twimg.com/profile_images/458794690867761152/IMn9gg6K.jpeg',

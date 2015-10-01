@@ -54,7 +54,6 @@
   UIViewController *rootViewController = [[UIViewController alloc] init];
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
-  jsCodeLocation = [NSURL URLWithString:@"http://localhost:8080/index.ios.bundle"];
   [self.window makeKeyAndVisible];
   return YES;
 }
