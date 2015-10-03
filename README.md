@@ -1,5 +1,7 @@
 #Same Ride demo
 
+## Be aware: The code is node to be used in production. THIS IS JUST PROOF OF CONCEPT
+
 ###Supported input
 
 To see how map widget works, you need to enter on of theese cities:
