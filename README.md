@@ -1,6 +1,6 @@
 #Same Ride demo
 
-## Be aware: The code is node to be used in production. THIS IS JUST PROOF OF CONCEPT
+## Be aware: The code is not intented for production usage. THIS IS JUST PROOF OF CONCEPT
 
 ###Supported input
 
