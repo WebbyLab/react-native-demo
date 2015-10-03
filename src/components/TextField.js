@@ -1,6 +1,6 @@
 'use strict';
 
-import React        from 'react-native';
+import React from 'react-native';
 
 const {
     StyleSheet,
@@ -11,20 +11,17 @@ const {
 } = React;
 
 export default class TextField extends React.Component {
+    static propTypes = {
+        items: React.PropTypes.array.isRequired,
+        displayingProp: React.PropTypes.string.isRequired
+    }
 
-  static propTypes = {
-    items: React.PropTypes.array.isRequired,
-    displayingProp: React.PropTypes.string.isRequired
-  }
+    constructor(props) {
+        super(props);
 
-  constructor(props) {
-    super(props);
-
-    this.onSelect = this.onSelect.bind(this);
-    this.state = {
-        displayedText: ''
-    };
-  }
+        this.onSelect = this.onSelect.bind(this);
+        this.state = { displayedText: '' };
+    }
 
     onSelect(text) {
         this.setState({
@@ -37,34 +34,33 @@ export default class TextField extends React.Component {
         }
     }
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <TextInput
-          style={styles.autocomplete}
-          placeholder={this.props.placeholder}
-          editable={this.props.disabled}
-          onChangeText={this.onSelect}
-          value={this.state.displayedText}
-        />
-    </View>
-    );
-  }
+    render() {
+        return (
+            <View style={styles.container}>
+                <TextInput
+                  style={styles.autocomplete}
+                  placeholder={this.props.placeholder}
+                  editable={this.props.disabled}
+                  onChangeText={this.onSelect}
+                  value={this.state.displayedText} />
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
     autocomplete: {
-      alignSelf: 'stretch',
-      fontSize: 18,
-      borderRadius: 2,
-      padding: 5,
-      borderWidth: 1,
-      borderColor: '#dddddd',
-      height: 40,
-      margin: 10,
+        alignSelf: 'stretch',
+        fontSize: 18,
+        borderRadius: 2,
+        padding: 5,
+        borderWidth: 1,
+        borderColor: '#dddddd',
+        height: 40,
+        margin: 10,
     },
 
     container: {
-      flex: 1,
+        flex: 1,
     }
 });
