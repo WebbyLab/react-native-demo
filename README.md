@@ -1,5 +1,7 @@
 #Same Ride demo
 
+## Be aware: The code is not intented for production usage. THIS IS JUST PROOF OF CONCEPT
+
 ###Supported input
 
 To see how map widget works, you need to enter on of theese cities:
