@@ -1,10 +1,10 @@
 'use strict';
 
 import React from 'react-native';
-import {results} from './../data/data';
+import {top} from './../data/data';
 import palette  from './../styles/palette';
-import OrderItem from './OrderItem';
-import OrderPage from './OrderPage';
+import TopRatedItem from './TopRatedItem';
+import ReviewsPage from './ReviewsPage';
 
 
 const {
@@ -17,20 +17,24 @@ const {
   ListView
 } = React;
 
-export default class OrdersList extends React.Component {
+export default class TopRatedList extends React.Component {
+
+  static propTypes = {
+    data: React.PropTypes.object.isRequired,
+  };
 
   constructor(props) {
     super(props);
 
     this.renderOrderItem = this.renderOrderItem.bind(this);
-    this.selectRow = this.selectRow.bind(this);
+    this.selectRow       = this.selectRow.bind(this);
 
     const dataSource = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2,
     });
 
     this.state = {
-      dataSource: dataSource.cloneWithRows(results)
+      dataSource: dataSource.cloneWithRows(top)
     };
   }
 
@@ -48,18 +52,18 @@ export default class OrdersList extends React.Component {
 
   renderOrderItem(item) {
     return (
-      <OrderItem
+      <TopRatedItem
         item={item}
         onRowSelect={this.selectRow}
       />
     );
   }
 
-  selectRow(order) {
+  selectRow(item) {
     this.props.navigator.push({
-      component: OrderPage,
-      title: 'Order',
-      passProps: { order },
+      component: ReviewsPage,
+      title: 'Reviews',
+      passProps: { item },
     });
   }
 }

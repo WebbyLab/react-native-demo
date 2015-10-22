@@ -1,11 +1,12 @@
 'use strict';
 
-import React    from 'react-native';
+import React        from 'react-native';
 
-import SearchPage from './components/SearchPage';
-import OrdersList from './components/OrdersList';
+import SearchPage   from './components/SearchPage';
+import OrdersList   from './components/OrdersList';
+import TopRatedList from './components/TopRatedList';
 
-import palette  from './styles/palette.js';
+import palette      from './styles/palette.js';
 
 const {
 	NavigatorIOS,
@@ -74,7 +75,7 @@ export default class App extends React.Component {
 							selectedTab: 'topRatedTab',
 						});
 					}}>
-					{this.renderContent('Tranding', OrdersList)}
+					{this.renderContent('Top rated', TopRatedList)}
 				</TabBarIOS.Item>
 			</TabBarIOS>
 		);
